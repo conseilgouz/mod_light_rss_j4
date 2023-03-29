@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.0" client="site" method="upgrade">
+	<name>Light RSS</name>
+	<creationDate>2023/03/28</creationDate>
+	<author>ConseilGouz</author>
+	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
+	<authorUrl>www.conseilgouz.com</authorUrl>
+	<copyright>Copyright (C) 2023 ConseilGouz.com. All Rights Reserved</copyright>
+	<version>2.0.1</version>
+	<description>
+	<![CDATA[
+	Parse and Display RSS Feed News with Bootstrap Tooltip. From Prieco light RSS module. 
+	]]>
+	</description>
+	<namespace path="src">ConseilGouz\Module\LightRSS</namespace>
+	<scriptfile>script.php</scriptfile>
+	<changelogurl>https://raw.githubusercontent.com/conseilgouz/mod_light_rss_j4/master/mod_light_rss_changelog.xml</changelogurl>
+	<files>
+		<filename module="mod_light_rss">mod_light_rss.php</filename>
+		<folder>tmpl</folder>
+		<folder>src</folder>
+		<filename>index.html</filename>
+		<filename>mod_light_rss.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="rssurl" type="text" size="50" default="" label="RSS URL" description="Enter the URL of a RSS feed." />
+				<field name="rsstitle" type="radio" class="btn-group btn-group-yesno" default="0" label="Feed Title" description="Display news feed title">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="rssdesc" type="radio" class="btn-group btn-group-yesno" default="0" label="Feed Description" description="Show the description text for each news feed">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="rssimage" type="radio" class="btn-group btn-group-yesno" default="0" label="Feed Image" description="Show the image associated with each news feed">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="rssitems" type="text"  size="6" default="5" label="Number of Items" description="Enter number of RSS items to display for each RSS feed" />
+				<field name="rssitemtitle_words" type="text" size="6" default="15" label="Item Title Word Count " description="Allows you to limit the amount of visible item title text. 0 will show all the text" />
+				<field name="rssitemdesc" type="radio" class="btn-group btn-group-yesno" default="0" label="Item Description Text" description="Show description text for each RSS item in the main list.">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="rssitemdesc_words" type="text" size="6" default="25" label="Item Description Word Count" description="Maximum number of words to display for each RSS item description. 0 will show all the text" />
+				<field name="rssitemdesc_images" type="radio" class="btn-group btn-group-yesno" default="0" label="Item Description Text Images" description="Allow images in the item description text in the main list.">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="link_target" type="radio" class="btn-group btn-group-yesno" default="1" label="RSS Feed Link Target" description="Open RSS feed links in this window or a new window?">
+					<option value="1">New Window</option>
+					<option value="0">Same Window</option>
+				</field>
+				<field name="no_follow" type="radio" class="btn-group btn-group-yesno" default="0" label="Add rel='nofollow' to links" description="Add rel='nofollow' to links">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>		
+				<field name="@spacer" type="spacer" default="" label="Tooltip Settings" description="The settings below are related to the mouseover tooltip" />
+				<field name="enable_tooltip" type="radio" class="btn-group btn-group-yesno" default="yes" label="Enable Tooltip" description="Show item description in mouseover tooltip? e.g this one!">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</field>
+				<field name="t_word_count_title" type="text" size="6" default="25" label="Tooltip Title Word Count" description="Allows you to limit the amount of visible item title text in the tooltip. 0 will show all the text" />
+				<field name="t_word_count_desc" type="text" size="6" default="25" label="Tooltip Description Word Count" description="Allows you to limit the amount of visible item description text in the tooltip. 0 will show all the text" />
+				<field name="tooltip_desc_images" class="btn-group btn-group-yesno" type="radio" default="0" label="Tooltip Description Text Images" description="Allow images in the tooltip description text">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field name="moduleclass_sfx" type="text" default="" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"  />
+				<field
+					name="cache"
+					type="list"	default="0"
+					label="COM_MODULES_FIELD_CACHING_LABEL" >
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"	default="1"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"/>
+				<field
+					name="cachemode"
+					type="hidden" default="itemid">
+					<option
+						value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+	<updateservers>
+	<server type="extension" name="Light RSS" priority="1">https://raw.githubusercontent.com/conseilgouz/updates_github/master/light_rss_update.xml</server>
+	</updateservers>
+	
+</extension>

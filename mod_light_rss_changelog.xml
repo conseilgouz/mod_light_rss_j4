@@ -1,0 +1,13 @@
+<changelogs>
+	<changelog>
+		<element>mod_light_rss</element>
+		<type>Module</type>
+		<version>2.0.1</version>
+        <note>
+            <item>Update : 29/03/2023</item>
+        </note>
+        <addition>
+            <item>Joomla 4.0 compatibility</item>
+        </addition>
+	</changelog>
+</changelogs>
