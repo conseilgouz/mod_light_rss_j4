@@ -25,11 +25,13 @@ class mod_light_rssInstallerScript
 	private $previous_version        = '';
 	private $dir           = null;
 	private $installerName = 'lightrssinstaller';
+	protected $db;
 	public function __construct()
 	{
 		$this->dir = __DIR__;
 		$this->lang = Factory::getLanguage();
 		$this->lang->load($this->extname);
+		$this->db = Factory::getDbo();
 	}
 
     function preflight($type, $parent)
@@ -80,13 +82,13 @@ class mod_light_rssInstallerScript
 		// update enable_tooltip parameter (yes/no becomes 1/0
 		$query = $this->db->getQuery(true)
 			->update('#__modules')
-			->set($this->db->quoteName('params').' = REPLACE(params,'.$this->db->quote("enable_tooltip":"yes").','.$this->db->quote("enable_tooltip":"1").')')
+			->set($this->db->quoteName('params').' = REPLACE(params,'.$this->db->quote('"enable_tooltip":"yes"').','.$this->db->quote('"enable_tooltip":"1"').')')
 			->where($this->db->quoteName('module') . '="mod_light_rss"');
 		$this->db->setQuery($query);
 		$this->db->execute();
 		$query = $this->db->getQuery(true)
 			->update('#__modules')
-			->set($this->db->quoteName('params').' = REPLACE(params,'.$this->db->quote("enable_tooltip":"no").','.$this->db->quote("enable_tooltip":"0").')')
+			->set($this->db->quoteName('params').' = REPLACE(params,'.$this->db->quote('"enable_tooltip":"no"').','.$this->db->quote('"enable_tooltip":"0"').')')
 			->where($this->db->quoteName('module') . '="mod_light_rss"');
 		$this->db->setQuery($query);
 		$this->db->execute();
