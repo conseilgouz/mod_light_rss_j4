@@ -1,7 +1,7 @@
 <?php
 /* ------------------------------------------------------------------------
  * lightrss - Light RSS for Joomla 4.x from Prieco Light RSS module
- * Version		   2.0.0 
+ * Version		   2.1.0 
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  * @copyright (C) 2023 ConseilGouz. All Rights Reserved.
  * @author ConseilGouz 
@@ -53,8 +53,9 @@ $rssrtl="";
 		if ($light_rss['items']) {
 			foreach ($light_rss['items'] as $item) {
 				if ($tooltips) {
+					$pos = $params->get('tooltip_position', 'bottom');
 					$title = $item['tooltip']['title'] . '::' . $item['tooltip']['description'];
-					$bootstrap =  ' data-bs-toggle="tooltip" data-bs-placement="bottom" ';
+					$bootstrap =  ' data-bs-toggle="tooltip" data-bs-placement="'.$pos.'" ';
 				} else {
 				    $title = $item['description'] ? $item['description'] : '';
 					$bootstrap = "";
