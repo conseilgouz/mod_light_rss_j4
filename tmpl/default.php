@@ -7,25 +7,26 @@
  * @author ConseilGouz 
 */
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 
 // security check - no direct access
 defined('_JEXEC') or die('Restricted access');
 
-//error handling: output any error message to admin users only
-$user = Factory::getUser();
-if (count($light_rss['error']) && in_array($user->gid, array(24, 25))) {
+//error handling: output any error message to everybody
+if (count($light_rss['error'])) {
 	// only show errors to admin group users
 	print '<div style="color:red;"><b>Error(s):</b><ul style="margin-left:4px;padding-left:4px;">';
 	foreach ($light_rss['error'] as $error) {
 		print '<li>' . $error . '</li>';
 	}
 	print '</ul></div>';
+	return true;
 }
-
+$tooltips = false;
 //check to enable tooltip js for lightTip classed elements
-if ($params->get('enable_tooltip') == 'yes') {
-            \Joomla\CMS\HTML\HTMLHelper::_('bootstrap.tooltip', '.btn', []);
-            \Joomla\CMS\HTML\HTMLHelper::_('bootstrap.tooltip', 'a', []);
+if ($params->get('enable_tooltip') == 1)  {
+// 	HTMLHelper::_('bootstrap.tooltip', '.btn', []);
+	HTMLHelper::_('bootstrap.tooltip', 'a', []);
 	$tooltips = true;
 }
 $rssrtl="";
@@ -53,9 +54,9 @@ $rssrtl="";
 			foreach ($light_rss['items'] as $item) {
 				if ($tooltips) {
 					$title = $item['tooltip']['title'] . '::' . $item['tooltip']['description'];
-					$bootstrap =  ' data-bs-toggle="tooltip" data-bs-placement="top" ';
+					$bootstrap =  ' data-bs-toggle="tooltip" data-bs-placement="bottom" ';
 				} else {
-					$title = $item['description'];
+				    $title = $item['description'] ? $item['description'] : '';
 					$bootstrap = "";
 				}
 				//item desc

@@ -77,6 +77,20 @@ class mod_light_rssInstallerScript
 				File::delete($file);
 			}
 		}
+		// update enable_tooltip parameter (yes/no becomes 1/0
+		$query = $this->db->getQuery(true)
+			->update('#__modules')
+			->set($this->db->quoteName('params').' = REPLACE(params,'.$this->db->quote("enable_tooltip":"yes").','.$this->db->quote("enable_tooltip":"1").')')
+			->where($this->db->quoteName('module') . '="mod_light_rss"');
+		$this->db->setQuery($query);
+		$this->db->execute();
+		$query = $this->db->getQuery(true)
+			->update('#__modules')
+			->set($this->db->quoteName('params').' = REPLACE(params,'.$this->db->quote("enable_tooltip":"no").','.$this->db->quote("enable_tooltip":"0").')')
+			->where($this->db->quoteName('module') . '="mod_light_rss"');
+		$this->db->setQuery($query);
+		$this->db->execute();
+		
 	}
 
 	// Check if Joomla version passes minimum requirement

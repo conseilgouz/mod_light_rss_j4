@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="4.0" client="site" method="upgrade">
 	<name>Light RSS</name>
-	<creationDate>2023/03/28</creationDate>
+	<creationDate>2023/06/12</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<copyright>Copyright (C) 2023 ConseilGouz.com. All Rights Reserved</copyright>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<description>
 	<![CDATA[
 	Parse and Display RSS Feed News with Bootstrap Tooltip. From Prieco light RSS module. 
@@ -27,46 +27,52 @@
 			<fieldset name="basic">
 				<field name="rssurl" type="text" size="50" default="" label="RSS URL" description="Enter the URL of a RSS feed." />
 				<field name="rsstitle" type="radio" class="btn-group btn-group-yesno" default="0" label="Feed Title" description="Display news feed title">
-					<option value="1">Yes</option>
-					<option value="0">No</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
 				<field name="rssdesc" type="radio" class="btn-group btn-group-yesno" default="0" label="Feed Description" description="Show the description text for each news feed">
-					<option value="1">Yes</option>
-					<option value="0">No</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
 				<field name="rssimage" type="radio" class="btn-group btn-group-yesno" default="0" label="Feed Image" description="Show the image associated with each news feed">
-					<option value="1">Yes</option>
-					<option value="0">No</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
 				<field name="rssitems" type="text"  size="6" default="5" label="Number of Items" description="Enter number of RSS items to display for each RSS feed" />
 				<field name="rssitemtitle_words" type="text" size="6" default="15" label="Item Title Word Count " description="Allows you to limit the amount of visible item title text. 0 will show all the text" />
 				<field name="rssitemdesc" type="radio" class="btn-group btn-group-yesno" default="0" label="Item Description Text" description="Show description text for each RSS item in the main list.">
-					<option value="1">Yes</option>
-					<option value="0">No</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
-				<field name="rssitemdesc_words" type="text" size="6" default="25" label="Item Description Word Count" description="Maximum number of words to display for each RSS item description. 0 will show all the text" />
+				<field showon="rssitemdesc:1" name="rssitemdesc_words" type="text" size="6" default="25" label="Item Description Word Count" description="Maximum number of words to display for each RSS item description. 0 will show all the text" />
 				<field name="rssitemdesc_images" type="radio" class="btn-group btn-group-yesno" default="0" label="Item Description Text Images" description="Allow images in the item description text in the main list.">
-					<option value="1">Yes</option>
-					<option value="0">No</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
 				<field name="link_target" type="radio" class="btn-group btn-group-yesno" default="1" label="RSS Feed Link Target" description="Open RSS feed links in this window or a new window?">
 					<option value="1">New Window</option>
 					<option value="0">Same Window</option>
 				</field>
 				<field name="no_follow" type="radio" class="btn-group btn-group-yesno" default="0" label="Add rel='nofollow' to links" description="Add rel='nofollow' to links">
-					<option value="0">No</option>
-					<option value="1">Yes</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>		
 				<field name="@spacer" type="spacer" default="" label="Tooltip Settings" description="The settings below are related to the mouseover tooltip" />
-				<field name="enable_tooltip" type="radio" class="btn-group btn-group-yesno" default="yes" label="Enable Tooltip" description="Show item description in mouseover tooltip? e.g this one!">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+				<field name="enable_tooltip" type="radio" class="btn-group btn-group-yesno" default="1" label="Enable Tooltip" description="Show item description in mouseover tooltip? e.g this one!">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
-				<field name="t_word_count_title" type="text" size="6" default="25" label="Tooltip Title Word Count" description="Allows you to limit the amount of visible item title text in the tooltip. 0 will show all the text" />
-				<field name="t_word_count_desc" type="text" size="6" default="25" label="Tooltip Description Word Count" description="Allows you to limit the amount of visible item description text in the tooltip. 0 will show all the text" />
-				<field name="tooltip_desc_images" class="btn-group btn-group-yesno" type="radio" default="0" label="Tooltip Description Text Images" description="Allow images in the tooltip description text">
-					<option value="1">Yes</option>
-					<option value="0">No</option>
+				<field showon="enable_tooltip:1" name="t_word_count_title" type="text" size="6" default="25" label="Tooltip Title Word Count" description="Allows you to limit the amount of visible item title text in the tooltip. 0 will show all the text" />
+				<field showon="enable_tooltip:1" name="t_word_count_desc" type="text" size="6" default="25" label="Tooltip Description Word Count" description="Allows you to limit the amount of visible item description text in the tooltip. 0 will show all the text" />
+				<field showon="enable_tooltip:1" name="tooltip_desc_images" class="btn-group btn-group-yesno" type="radio" default="0" label="Tooltip Description Text Images" description="Allow images in the tooltip description text">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field showon="enable_tooltip:1" name="tooltip_position" type="radio" class="btn-group" default="bottom" label="Tooltip Position" description="Select tooltip position (default:bottom)">
+					<option value="bottom">Bottom</option>
+					<option value="top">Top</option>
+					<option value="left">Left</option>
+					<option value="right">Right</option>
 				</field>
 			</fieldset>
 			<fieldset

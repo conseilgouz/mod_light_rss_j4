@@ -36,7 +36,7 @@ class LightRSSHelper {
 		$rsscache = $params->get('rsscache', 3600);
 		$link_target = $params->get('link_target', 1);
 		$no_follow = $params->get('no_follow', 0);
-		$enable_tooltip = $params->get('enable_tooltip', 'yes');
+		$enable_tooltip = $params->get('enable_tooltip', '1');
 		$tooltip_desc_words = $params->get('t_word_count_desc', 25);
 		$tooltip_desc_images = $params->get('tooltip_desc_images', 1);
 		$tooltip_title_words = $params->get('t_word_count_title', 25);
@@ -66,8 +66,14 @@ class LightRSSHelper {
 		}
 
 		//Load and build the feed array
-		$rss = new FeedFactory;;
-		$feed = $rss->getFeed($rssurl);
+		try {
+			$rss = new FeedFactory;;
+			$feed = $rss->getFeed($rssurl);
+		}
+		catch (\Exception $e) {
+			$light_rss['error'][] = 'Error while getting feed.';
+			return $light_rss;
+		}
 
 		// feed title			
 		if ($feed->title && $rsstitle) {
@@ -132,7 +138,7 @@ class LightRSSHelper {
 				}
 
 				// tooltip text
-				if ($enable_tooltip == 'yes') {
+				if ($enable_tooltip == '1') {
 
 					//tooltip item title
 					$t_item_title = trim($currItem->title);
