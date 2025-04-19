@@ -1,0 +1,60 @@
+<changelogs>
+	<changelog>
+		<element>mod_light_rss</element>
+		<type>Module</type>
+		<version>2.2.0</version>
+        <note>
+            <item>Update : 19/04/2025</item>
+        </note>
+        <change>
+            <item>Becomes a service provider</item>
+        </change>
+	</changelog>
+	<changelog>
+		<element>mod_light_rss</element>
+		<type>Module</type>
+		<version>2.1.2</version>
+        <note>
+            <item>Update : 12/06/2023</item>
+        </note>
+        <fix>
+            <item>Handle tooltip positions</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>mod_light_rss</element>
+		<type>Module</type>
+		<version>2.1.1</version>
+        <note>
+            <item>Update : 12/06/2023</item>
+        </note>
+        <fix>
+            <item>Installation script error on update modules</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>mod_light_rss</element>
+		<type>Module</type>
+		<version>2.1.0</version>
+        <note>
+            <item>Update : 12/06/2023</item>
+        </note>
+        <fix>
+            <item>Handle RSS error</item>
+        </fix>
+		<addition>
+			<item>Choose tooltip position</item>
+		</addition>
+	</changelog>
+	<changelog>
+		<element>mod_light_rss</element>
+		<type>Module</type>
+		<version>2.0.1</version>
+        <note>
+            <item>Update : 29/03/2023</item>
+        </note>
+        <addition>
+            <item>Joomla 4.0 compatibility</item>
+        </addition>
+	</changelog>
+</changelogs>
