@@ -44,7 +44,7 @@ $rssrtl="";
 		print '<div class="light-rss-desc">' . $light_rss['description'] . '</div>';
 	}
 //feed image
-	if ($params->get('rssimage', 0) && $light_rss['image']['url']) {
+	if ($params->get('rssimage', 0) && isset($light_rss['image']) && $light_rss['image']['url']) {
 		print '<img src="' . $light_rss['image']['url'] . '" title="' . $light_rss['image']['title'] . '" class="light-rss-img">';
 	}
 	?>
